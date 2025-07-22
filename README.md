@@ -17,12 +17,12 @@ All priors on population sizes, divergence times, and migration rates were set b
 
 | Model | Theta | m     | t    |
 |-------|-------|-------|------|
-| BH    | 14.20 | 0.70  | 1.42 |
-| HS    | 14.20 | 0.70  | 1.42 |
-| SY    | 15.98 | 0.63  | 1.60 |
-| BS    | 14.20 | 0.70  | 1.42 |
-| BY    | 15.39 | 0.65  | 1.54 |
-| HY    | 15.98 | 0.63  | 1.60 |
+| Baka-Hadza    | 14.20 | 0.70  | 1.42 |
+| Hadza-Sandawe    | 14.20 | 0.70  | 1.42 |
+| Sandawe-Yoruba    | 15.98 | 0.63  | 1.60 |
+| Baka-Sandawe    | 14.20 | 0.70  | 1.42 |
+| Baka-Yoruba    | 15.39 | 0.65  | 1.54 |
+| Hadza-Yoruba    | 15.98 | 0.63  | 1.60 |
 | All   |  5.51 | 20.00 | 2.20 |
 
 **Table:** Prior upper limits on population sizes (Theta), migration rates (m), and divergence times (t) used in `IMa3` analyses of African Hunter-Gatherer demographic history. Models include pairwise comparisons among Baka (B), Hadza (H), Sandawe (S), and Yoruba (Y), and a full four-population model ("All").
@@ -36,8 +36,12 @@ To perform IMa3 analyses with any of the files on an OpenMPI-equipped machine:
 
 <pre lang="markdown">
 bash #!/bin/bash 
-# Run IMa3 from the folder where you have one of the files above
-mpirun -np 4 ima3 -i BakaHadzaAllchromosomes -o bhall -q14.2 -m0.7 -t1.42 -b100000 -l48.0 -hn20 -ha0.97
+# Run IMa3 under a two-population model from the folder where you have one of the files above in M (MCMC) mode
+mpirun -np 4 ima3 -i BakaHadzaAllchromosomes -o bhall -q14.2 -m0.7 -t1.42 -b100000 -l48.0 -hn20 -ha0.97 -p235 -r25
+
+# Run IMa3 under a two-population model, with an unsampled ghost population in M (MCMC mode)
+mpirun -np 4 ima3 -i BakaHadzaAllchromosomes -o bhall_withghost -j1 -q14.2 -m0.7 -t1.42 -b100000 -l48.0 -hn20 -ha0.97 -p235 -r25
 </pre>
 
-
+# References
+All data presented here were obtained from the analyses of Fan, S., Kelly, D. E., Beltrame, M. H., Hansen, M. E., Mallick, S., Ranciaro, A., ... & Tishkoff, S. A. (2019). African evolutionary history inferred from whole genome sequence data of 44 indigenous African populations. Genome Biology, 20(1), 82.
