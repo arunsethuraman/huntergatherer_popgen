@@ -31,4 +31,13 @@ All priors on population sizes, divergence times, and migration rates were set b
 
 ![africa_models_2pops.pdf](https://github.com/user-attachments/files/21374407/africa_models_2pops.pdf)
 
+# IMa3 analyses
+To perform IMa3 analyses with any of the files on an OpenMPI-equipped machine:
+
+<pre lang="markdown">
+bash #!/bin/bash 
+# Run IMa3 from the folder where you have one of the files above
+mpirun -np 4 ima3 -i BakaHadzaAllchromosomes -o bhall -q14.2 -m0.7 -t1.42 -b100000 -l48.0 -hn20 -ha0.97
+</pre>
+
 
