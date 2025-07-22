@@ -1,2 +1,16 @@
-# huntergatherer_popgen
-Contains data files for analyses of Native African Hunter Gatherer populations, as described by Sethuraman et al., 2025
+# Hunter-Gatherer Population Genomics
+Contains data files for analyses of Native African Hunter Gatherer populations, as described by Sethuraman et al., 2025.
+
+# Data Generation
+African Hunter-Gatherer populations (Hadza, Sandawe) are a culturally diverse group of indigenous populations who are hypothesized to have diverged from other ancient African modern human lineages (particularly the Pygmy (Baka) and Yoruba (agricultural) populations). The Hadza and Sandawe are both historically Hunter-Gatherer populations from Central Tanzania, and are known to share a complex cultural and demographic history. 
+While the Hadza are hypothesized to have little cultural confluence with other native populations, the Sandawe, on the other hand, have historically admixed with other Northern populations, including the Baka (pygmy), and Yoruba (pastoral/agricultural).
+
+Here we filtered the genomes of $20$ individuals ($5$ each of Hadza, Sandawe, Baka, and Yoruba) with filters used by Gronau et al., 2011, based on removing recombination hotspots, duplications, syntenic regions with chimpanzees. The filtered diploid SNP loci were then phased to obtain haplotypes across populations. The haplotypes were then filtered further to remove possible recombining segments using a four-gamete test.
+This produced a total of 355 random, unlinked, putatively neutral loci, which were used in IM and admixture analyses, which are presented here in pairwise, IMa3 formatted input files.
+
+# Data Analyses
+Demography was then inferred under different models of population history - (1) 2 population IM models with all pairs of populations (Hadza-Sandawe, Sandawe-Baka, Baka-Yoruba, Baka-Hadza, Sandawe-Yoruba, Hadza-Yoruba) assuming that there is no ghost population, and (2) 2 population IM models with all pairs of populations, assuming that there is an outgroup ghost population.
+
+All priors on population sizes, divergence times, and migration rates were set based on the guidelines of Hey (2011), by using the harmonic mean of Watterson's estimator of Ne across loci, and are shown below. Parallel runs of MCMC were then performed with 100,000 iterations of burn-in, followed by a total run time of 48 hours. Mixing, and convergence were assessed by observing swap rates over runs, acceptance rates of parameter updates, effective sample sizes, and autocorrelations. Convergence of the MCMC was then assessed using Tracer (Rambaut 2018). Sampled genealogies were used to estimate marginal posterior density distributions of demographic parameters and scaled with the modern human generation time of 29 years. Likelihood ratio tests were then used to determine statistical significance of migration estimates. These estimates were then compared with the four-population models (with ghost) of Hey et al., 2019, to understand potential parameter biases and ascertain power to provide support for or against the presence of unsampled ghost populations. 
+
+
